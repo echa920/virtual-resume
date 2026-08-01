@@ -1,0 +1,206 @@
+.resume {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+/* ---------- header ---------- */
+
+.header {
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.name {
+  font-size: 40px;
+  letter-spacing: -0.8px;
+}
+
+.title {
+  margin-top: 4px;
+  font-size: 19px;
+  color: var(--accent);
+}
+
+.summary {
+  margin-top: 16px;
+  max-width: 62ch;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 18px;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* ---------- sections ---------- */
+
+.section {
+  margin-top: 40px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-muted);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- experience / education entries ---------- */
+
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.entry-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 16px;
+}
+
+.entry-role {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.entry-at {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.entry-meta {
+  font-size: 14px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.entry-sub {
+  margin-top: 2px;
+  color: var(--text-muted);
+}
+
+.entry-detail {
+  margin-top: 6px;
+  font-size: 15px;
+}
+
+.bullets {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bullets li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.bullets li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.65em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ---------- project cards ---------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-soft);
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.card-body {
+  margin-top: 6px;
+  font-size: 15px;
+}
+
+/* ---------- skills ---------- */
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skill-group dt {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin-bottom: 8px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  padding: 3px 10px;
+  font-size: 13px;
+  border-radius: 999px;
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.card .tags {
+  margin-top: 12px;
+}
+
+/* ---------- print ---------- */
+
+@media print {
+  :root {
+    --text: #333;
+    --text-h: #000;
+    --text-muted: #555;
+    --bg: #fff;
+    --bg-soft: #fff;
+    --accent: #000;
+    --accent-bg: #eee;
+  }
+
+  .resume {
+    padding: 0;
+    max-width: none;
+  }
+
+  .section {
+    margin-top: 24px;
+    break-inside: avoid;
+  }
+
+  .entry,
+  .card {
+    break-inside: avoid;
+  }
+}
