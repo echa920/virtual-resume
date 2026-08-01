@@ -10,10 +10,17 @@
 // ============================================================================
 
 // SAFETY FLAG — leave this true while the activities below are still the
-// invented sample data. It shows a banner saying so and tells search engines
-// not to index the page, so nothing here can be mistaken for your real record.
-// Set it to false the moment you have replaced everything with real content.
+// invented sample data. It shows a banner saying so, so nothing here can be
+// mistaken for your real record. Set it to false once real content is in.
 export const isSampleData = true
+
+// UNLISTED — asks search engines not to index the page, so it is reachable by
+// people you send the link to but does not turn up in a search for your name.
+//
+// This is not access control. GitHub Pages serves the site to anyone who
+// requests the URL; there is no password and no way to add one on a free
+// account. Treat everything here as public, just not advertised.
+export const unlisted = true
 
 export const profile = {
   name: 'Pablo Echavarria Builes',

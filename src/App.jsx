@@ -4,7 +4,8 @@ import CategoryTabs from './components/CategoryTabs'
 import ActivityList from './components/ActivityList'
 import ActivityDetail from './components/ActivityDetail'
 import SampleBanner from './components/SampleBanner'
-import { categories, activities, isSampleData } from './portfolioData'
+import NoIndex from './components/NoIndex'
+import { categories, activities, isSampleData, unlisted } from './portfolioData'
 import './App.css'
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
 
   return (
     <main className="page">
+      {unlisted || isSampleData ? <NoIndex /> : null}
       {isSampleData ? <SampleBanner /> : null}
 
       <Header />
