@@ -2,11 +2,20 @@
 // Every string below is placeholder text — replace it with your own.
 
 export const profile = {
-  name: 'Pablo Echavarria',
+  name: 'Pablo Echavarria Builes',
   title: 'Your Professional Title',
+
+  // Drop your photo in public/ and point to it, e.g. '/photo.jpg'.
+  // Leave as '' and the header renders without an avatar — no layout break.
+  photo: '',
+
   summary:
     'One or two sentences about what you do and what you are looking for. ' +
     'Keep it short — this is the first thing anyone reads.',
+
+  // Shown as a small pill under your name. Set to '' to hide it.
+  badge: 'First-generation Colombian',
+
   location: 'City, Country',
   email: 'you@example.com',
   links: [
@@ -55,9 +64,11 @@ export const projects = [
 ]
 
 export const skills = [
-  { group: 'Languages', items: ['JavaScript', 'Python', 'SQL'] },
+  { group: 'Programming', items: ['JavaScript', 'Python', 'SQL'] },
   { group: 'Frameworks', items: ['React', 'Node.js'] },
   { group: 'Tools', items: ['Git', 'Docker', 'VS Code'] },
+  // Bilingual is worth listing outright — edit or delete this group as you like.
+  { group: 'Spoken languages', items: ['Spanish', 'English'] },
 ]
 
 export const education = [

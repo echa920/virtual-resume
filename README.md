@@ -17,6 +17,21 @@ text there and the page updates; you shouldn't need to touch the components.
 
 The values currently in that file are **placeholders** — replace them with your own.
 
+### Adding a photo
+
+Put the image file in [`public/`](public/) and point `profile.photo` at it:
+
+```js
+photo: '/headshot.jpg',   // file lives at public/headshot.jpg
+```
+
+Anything in `public/` is copied to the site root as-is, so the path never includes
+`public`. A leading `/` is optional — the header joins the path against Vite's
+`BASE_URL` so it resolves correctly both locally and on GitHub Pages.
+
+Leave `photo: ''` and the header simply renders without an avatar. A square image
+works best — it's cropped to a circle.
+
 ## Running locally
 
 ```bash
