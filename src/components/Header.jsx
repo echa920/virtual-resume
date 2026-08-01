@@ -1,34 +1,33 @@
-import { profile } from '../resumeData'
-
-// Files in public/ are served under the configured base path, which is not '/'
-// on GitHub Pages. Vite rewrites absolute asset paths in index.html but not in
-// JS strings, so join against BASE_URL by hand or the image 404s once deployed.
-function assetUrl(path) {
-  return import.meta.env.BASE_URL + path.replace(/^\//, '')
-}
+import { profile, activities, ACTIVITY_LIMIT } from '../portfolioData'
+import assetUrl from '../assetUrl'
 
 export default function Header() {
+  const annualHours = activities.reduce(
+    (total, activity) => total + activity.hoursPerWeek * activity.weeksPerYear,
+    0,
+  )
+  const overLimit = activities.length > ACTIVITY_LIMIT
+
   return (
     <header className="header">
       <div className="identity">
         {profile.photo ? (
-          <img
-            className="avatar"
-            src={assetUrl(profile.photo)}
-            alt={profile.name}
-          />
+          <img className="avatar" src={assetUrl(profile.photo)} alt={profile.name} />
         ) : null}
 
         <div>
           <h1 className="name">{profile.name}</h1>
-          <p className="title">{profile.title}</p>
+          <p className="tagline">{profile.tagline}</p>
           {profile.badge ? <p className="badge">{profile.badge}</p> : null}
         </div>
       </div>
 
-      <p className="summary">{profile.summary}</p>
+      <p className="intro">{profile.intro}</p>
 
       <ul className="contact">
+        <li>
+          {profile.highSchool} · Class of {profile.graduationYear}
+        </li>
         <li>{profile.location}</li>
         <li>
           <a href={`mailto:${profile.email}`}>{profile.email}</a>
@@ -41,6 +40,28 @@ export default function Header() {
           </li>
         ))}
       </ul>
+
+      <dl className="totals">
+        <div className="total">
+          <dt>Activities listed</dt>
+          <dd className={overLimit ? 'num is-over' : 'num'}>
+            {activities.length}
+            <span className="of">of {ACTIVITY_LIMIT} allowed</span>
+          </dd>
+        </div>
+        <div className="total">
+          <dt>Hours per year, combined</dt>
+          <dd className="num">{annualHours.toLocaleString('en-US')}</dd>
+        </div>
+      </dl>
+
+      {overLimit ? (
+        <p className="warn">
+          The Common App accepts {ACTIVITY_LIMIT} activities. You have{' '}
+          {activities.length} — cut {activities.length - ACTIVITY_LIMIT} before
+          filling in the form, or keep them here and list only your strongest ten.
+        </p>
+      ) : null}
     </header>
   )
 }

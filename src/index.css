@@ -8,6 +8,11 @@
   --accent: #2563eb;
   --accent-bg: rgba(37, 99, 235, 0.08);
 
+  /* Semantic, kept separate from the accent so warnings never read as branding. */
+  --danger: #b42318;
+  --danger-bg: rgba(180, 35, 24, 0.06);
+  --danger-border: rgba(180, 35, 24, 0.35);
+
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
 
   font: 17px/1.6 var(--sans);
@@ -29,6 +34,10 @@
     --border: #2e303a;
     --accent: #7aa2f7;
     --accent-bg: rgba(122, 162, 247, 0.14);
+
+    --danger: #ff8a7a;
+    --danger-bg: rgba(255, 138, 122, 0.1);
+    --danger-border: rgba(255, 138, 122, 0.35);
   }
 }
 
