@@ -3,7 +3,8 @@ import Header from './components/Header'
 import CategoryTabs from './components/CategoryTabs'
 import ActivityList from './components/ActivityList'
 import ActivityDetail from './components/ActivityDetail'
-import { categories, activities } from './portfolioData'
+import SampleBanner from './components/SampleBanner'
+import { categories, activities, isSampleData } from './portfolioData'
 import './App.css'
 
 function App() {
@@ -41,6 +42,8 @@ function App() {
 
   return (
     <main className="page">
+      {isSampleData ? <SampleBanner /> : null}
+
       <Header />
 
       <CategoryTabs

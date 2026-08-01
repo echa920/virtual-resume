@@ -9,6 +9,12 @@
 // counter for each capped field so you can paste straight into the real form.
 // ============================================================================
 
+// SAFETY FLAG — leave this true while the activities below are still the
+// invented sample data. It shows a banner saying so and tells search engines
+// not to index the page, so nothing here can be mistaken for your real record.
+// Set it to false the moment you have replaced everything with real content.
+export const isSampleData = true
+
 export const profile = {
   name: 'Pablo Echavarria Builes',
   tagline: 'Applying for Fall 2027 · Intended major: Computer Science',
