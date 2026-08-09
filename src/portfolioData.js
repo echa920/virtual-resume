@@ -136,21 +136,25 @@ export const activities = [
     category: 'academic',
     type: 'Computer/Technology',
     position: 'Student',
-    organization: 'UT PREP STEM Program, University of Texas',
+    organization: 'UT PREP Summer STEM Camp, University of Texas',
     description:
-      'Learned Python and C++ across six coursework modules and applied them in projects, including a video game and a signal-transmission build.',
-    grades: [9, 10, 11, 12],
-    timing: [], // You listed Feb–May but called it a summer camp — see notes.
-    hoursPerWeek: null,
-    weeksPerYear: null,
+      'Five-week summer camp, 8-hour days Monday to Thursday. Completed six Python coursework modules and built projects including a video game.',
+    grades: [11],
+    timing: [TIMING.break],
+    // 16 Jun – 17 Jul 2026. Week one started on the Tuesday, so 4 weeks of
+    // 32 hours plus one of 24 = 152 hours; 30/week is the honest average.
+    hoursPerWeek: 30,
+    weeksPerYear: 5,
     continueInCollege: true,
     detail: [
-      'A STEM program run through the University of Texas where I worked through six coursework modules in Python and C++, then tested what I had learned by building things with it.',
-      'The projects included a video game and a signal-transmission project. My module work is on GitHub under the UT-Prep-4 organisation, which is the closest thing I have to a public record of how I actually learned to code.',
+      'Five weeks at the University of Texas, starting 16 June 2026, eight hours a day from Monday to Thursday. About 150 hours of actual desk time in a month.',
+      'The structure was six coursework modules in Python, each one building on the last, then applying them to projects of our own — a video game among them.',
+      'Every module is on GitHub under the UT-Prep-4 organisation, timestamped as I worked through it. It is the closest thing I have to a public record of how I actually learned to code, rather than a claim that I did.',
     ],
     highlights: [
-      'Six completed coursework modules, Python and C++',
-      'Built a video game and a signal-transmission project',
+      'Six coursework modules completed in five weeks',
+      '~150 hours of Python and C++',
+      'Work published publicly, module by module',
     ],
     photos: [],
   },
