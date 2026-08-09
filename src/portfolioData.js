@@ -40,8 +40,16 @@ export const profile = {
   school: 'Colegio Montessori Medellín',
   graduationYear: 2027,
 
-  coursework: ['Physics', 'Trigonometry', 'Calculus', 'Robotics'],
+  coursework: [
+    'Physics',
+    'Trigonometry',
+    'Calculus',
+    'Robotics',
+    'Advanced Engineering',
+  ],
 
+  // C++ came from the Advanced Engineering course, not the UT PREP camp — the
+  // camp repos are all Python. Both are real, they just have different sources.
   programming: ['Python', 'C++'],
 
   languages: [
@@ -237,16 +245,19 @@ export const activities = [
       'Seven years on school and club teams, named captain of both in my third year. MVP at Miami Heat camp and the Barranquilla international games.',
     grades: [9, 10, 11, 12],
     timing: [TIMING.all],
-    hoursPerWeek: null,
+    // 4 sessions a week at 1h30 = 6 hours. Weeks per year still needed.
+    hoursPerWeek: 6,
     weeksPerYear: null,
     continueInCollege: true,
     detail: [
       'Seven years of basketball across my school team and a club team, which between them run most of the year rather than a single season.',
+      'Training is four days a week, an hour and a half a session — six hours on the court in a normal week, before games.',
       'I was made captain of both in my third year. That was decided on leadership rather than being the best player on the floor, and it is the reason basketball is on this list at all.',
       'The two MVP awards came at the Miami Heat basketball camp and the Barranquilla international games.',
     ],
     highlights: [
       '7 years, school and club teams',
+      '4 sessions a week, 1h30 each',
       'Captain of both teams from year three',
       'MVP, Miami Heat camp',
       'MVP, Barranquilla international games',
