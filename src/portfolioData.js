@@ -19,12 +19,15 @@ export const unlisted = true
 
 export const profile = {
   name: 'Pablo Echavarria Builes',
-  tagline: 'Class of 2027 · Applying for Fall 2027',
+  tagline: 'Class of 2027 · Applying to US universities from Medellín, Colombia',
 
   // Drop your photo in public/ and point to it, e.g. 'headshot.jpg'.
   photo: '',
 
-  badge: 'First-generation Colombian',
+  // Your words: first member of your family to attend an American university.
+  // Note this is NOT the same as the Common App's "first-generation" status,
+  // which asks whether your parents hold a degree at all, from any country.
+  badge: 'First in my family to attend a university in the United States',
 
   intro:
     'Four things have taken most of my time in high school: a newscast I built ' +
@@ -161,7 +164,7 @@ export const activities = [
     ],
     highlights: [
       'Six coursework modules completed in five weeks',
-      '~150 hours of Python and C++',
+      '~150 hours of Python',
       'Work published publicly, module by module',
     ],
     photos: [],
@@ -198,15 +201,19 @@ export const activities = [
     category: 'service',
     type: 'Community Service (Volunteer)',
     position: 'Volunteer',
-    organization: 'Villatina project, Medellín',
-    description: '', // Needs your input — see notes.
-    grades: [],
-    timing: [],
-    hoursPerWeek: null,
-    weeksPerYear: null,
+    organization: 'Villatina community project, Medellín',
+    description:
+      'Volunteer with the Villatina community in Medellín every Christmas, and once or twice a quarter through the rest of the year.',
+    grades: [], // Which school years? "Every Christmas" implies several.
+    timing: [TIMING.all],
+    hoursPerWeek: null, // How long is a typical visit?
+    weeksPerYear: 6, // ~1–2 per quarter plus Christmas.
     continueInCollege: true,
-    detail: [],
-    highlights: [],
+    detail: [
+      'I go every Christmas, and once or twice a quarter the rest of the year. It is the one thing on this list that has nothing to do with school, applications or a team sheet.',
+      'What we actually do there, and what it has meant, is the part still missing from this page — and it is the part worth writing.',
+    ],
+    highlights: ['Every Christmas, plus 1–2 visits a quarter'],
     photos: [],
   },
 
@@ -221,8 +228,11 @@ export const activities = [
       "Founded the school's newscast system. Recorded 160+ hours of interviews, news and events, and recruited and trained 15 reporters.",
     grades: [9, 10, 11, 12],
     timing: [TIMING.year],
-    hoursPerWeek: null,
-    weeksPerYear: null,
+    // You said ~85 hours. Read as 85 per year over a ~34-week school year,
+    // which is 2.5/week. If you meant 85 across all four years, this is four
+    // times too high — say so and I will drop it to roughly 0.6/week.
+    hoursPerWeek: 2.5,
+    weeksPerYear: 34,
     continueInCollege: true,
     detail: [
       'The school had no newscast. I started one in 2023 and have run it since, which meant working out everything from scratch — what to cover, how to record it, and who would still be doing it after I graduate.',
@@ -272,7 +282,7 @@ export const activities = [
     organization: 'VEX Robotics competition team',
     description:
       'Competed in two VEX robotics competitions. Helped design and build three robots, two of which won their competition.',
-    grades: [],
+    grades: [10],
     timing: [TIMING.year],
     hoursPerWeek: null,
     weeksPerYear: null,
@@ -293,16 +303,19 @@ export const activities = [
     position: 'Class President',
     organization: 'Colegio Montessori Medellín',
     description:
-      'Elected class president by my year group two years running.',
-    grades: [],
+      'Elected class president twice by my year group, in 7th grade and again in 11th.',
+    // Only 11th goes in the boxes: the Common App records grades 9–12, so the
+    // 7th-grade term cannot be ticked. It stays in the text, where it is true.
+    grades: [11],
     timing: [TIMING.year],
     hoursPerWeek: null,
     weeksPerYear: null,
     continueInCollege: true,
     detail: [
-      'Elected by my year group two years running. What I actually did with the role is the part worth writing here, and it is the piece I still need to add.',
+      'Elected class president twice by the people I sit with every day — once in 7th grade and again in 11th, four years apart. Winning it the second time, after they had already seen me do the job once, is the part that means something.',
+      'What I actually did with the role is the piece still missing from this page.',
     ],
-    highlights: ['Elected two years running'],
+    highlights: ['Elected twice, in 7th and 11th grade'],
     photos: [],
   },
 
