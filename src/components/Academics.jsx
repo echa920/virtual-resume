@@ -1,4 +1,4 @@
-import { profile, honors, HONORS_LIMIT, LIMITS } from '../portfolioData'
+import { profile, honors, HONORS_LIMIT } from '../portfolioData'
 import { workingView } from '../viewMode'
 
 export default function Academics() {
@@ -55,29 +55,11 @@ export default function Academics() {
         </h2>
 
         <ul className="honors">
-          {honors.map((honor) => {
-            const over = honor.title.length > LIMITS.honor
-            return (
-              <li key={honor.id} className="honor">
-                <span className="honor-title">{honor.title}</span>
-                {workingView ? (
-                  <span className="honor-meta">
-                    <span className={over ? 'count is-over' : 'count'}>
-                      {honor.title.length}/{LIMITS.honor}
-                    </span>
-                    <span className={honor.level ? '' : 'is-blank'}>
-                      {honor.level ?? 'Level of recognition not set'}
-                    </span>
-                    <span className={honor.grades.length ? '' : 'is-blank'}>
-                      {honor.grades.length ? `Grade ${honor.grades.join(', ')}` : 'Grade not set'}
-                    </span>
-                  </span>
-                ) : honor.level ? (
-                  <span className="honor-meta">{honor.level}</span>
-                ) : null}
-              </li>
-            )
-          })}
+          {honors.map((honor) => (
+            <li key={honor.id} className="honor">
+              <span className="honor-title">{honor.title}</span>
+            </li>
+          ))}
         </ul>
 
         {workingView && overHonors ? (

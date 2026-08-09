@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { LIMITS, profile } from '../portfolioData'
+import { LIMITS } from '../portfolioData'
 import { missingFields, annualHours } from '../validation'
 
 function CharCount({ value, limit }) {
@@ -33,41 +33,36 @@ function CopyButton({ text }) {
   )
 }
 
+// Anything not filled in yet is simply left out. The one summary at the bottom
+// says what is missing, so every blank does not need its own placeholder.
 function Field({ label, value, limit }) {
-  const blank = !value
+  if (!value) return null
 
   return (
     <div className="field">
       <div className="field-head">
         <span className="field-label">{label}</span>
         <span className="field-tools">
-          {limit && !blank ? <CharCount value={value} limit={limit} /> : null}
-          {!blank ? <CopyButton text={value} /> : null}
+          {limit ? <CharCount value={value} limit={limit} /> : null}
+          <CopyButton text={value} />
         </span>
       </div>
-      <p className={blank ? 'field-value is-blank' : 'field-value'}>
-        {blank ? 'Not written yet' : value}
-      </p>
+      <p className="field-value">{value}</p>
     </div>
   )
 }
 
 function Stat({ label, value }) {
-  const blank = value === null || value === undefined
+  if (value === null || value === undefined) return null
   return (
     <div className="stat">
       <dt>{label}</dt>
-      <dd className={blank ? 'is-blank' : 'num'}>{blank ? 'Not set' : value}</dd>
+      <dd className="num">{value}</dd>
     </div>
   )
 }
 
 export default function CommonAppFields({ activity }) {
-  const grades = [...activity.grades].sort((a, b) => a - b)
-  // Stops at the final year of your school system, so there is no empty 12th
-  // grade box implying a year you were meant to fill in.
-  const allGrades = []
-  for (let g = 9; g <= profile.finalGrade; g++) allGrades.push(g)
   const hours = annualHours(activity)
   const missing = missingFields(activity)
 
@@ -84,21 +79,6 @@ export default function CommonAppFields({ activity }) {
       <Field label="Position / Leadership" value={activity.position} limit={LIMITS.position} />
       <Field label="Organization" value={activity.organization} limit={LIMITS.organization} />
       <Field label="Description" value={activity.description} limit={LIMITS.description} />
-
-      <div className="field">
-        <span className="field-label">Participation grade levels</span>
-        {grades.length ? (
-          <ul className="grades">
-            {allGrades.map((grade) => (
-              <li key={grade} className={grades.includes(grade) ? 'grade is-on' : 'grade'}>
-                {grade}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="field-value is-blank">Not set</p>
-        )}
-      </div>
 
       <dl className="stats">
         <Stat label="Timing" value={activity.timing.length ? activity.timing.join(', ') : null} />

@@ -6,7 +6,8 @@ const REQUIRED = [
   { key: 'position', label: 'Position / leadership' },
   { key: 'organization', label: 'Organization' },
   { key: 'description', label: 'Description' },
-  { key: 'grades', label: 'Grade levels' },
+  // Grade levels are still a form field and still live in portfolioData, but
+  // they are no longer shown or chased on the page.
   { key: 'timing', label: 'Timing' },
   { key: 'hoursPerWeek', label: 'Hours per week' },
   { key: 'weeksPerYear', label: 'Weeks per year' },
