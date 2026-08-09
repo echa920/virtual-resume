@@ -1,5 +1,3 @@
-import gradeRange from '../gradeRange'
-
 export default function ActivityList({ activities, active, onSelect }) {
   return (
     <ul className="list">
@@ -15,9 +13,6 @@ export default function ActivityList({ activities, active, onSelect }) {
             >
               <span className="list-org">{activity.organization}</span>
               <span className="list-position">{activity.position}</span>
-              <span className="list-meta">
-                {gradeRange(activity.grades)} · {activity.hoursPerWeek} hrs/wk
-              </span>
             </button>
           </li>
         )
