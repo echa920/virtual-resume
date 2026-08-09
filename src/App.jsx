@@ -4,6 +4,7 @@ import CategoryTabs from './components/CategoryTabs'
 import ActivityList from './components/ActivityList'
 import ActivityDetail from './components/ActivityDetail'
 import SampleBanner from './components/SampleBanner'
+import Academics from './components/Academics'
 import NoIndex from './components/NoIndex'
 import { categories, activities, isSampleData, unlisted } from './portfolioData'
 import './App.css'
@@ -47,6 +48,8 @@ function App() {
       {isSampleData ? <SampleBanner /> : null}
 
       <Header />
+
+      <Academics />
 
       <CategoryTabs
         categories={categories}

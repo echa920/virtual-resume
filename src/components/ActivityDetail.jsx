@@ -22,9 +22,14 @@ export default function ActivityDetail({ activity }) {
       ) : null}
 
       <div className="prose">
-        {activity.detail.map((paragraph, i) => (
-          <p key={i}>{paragraph}</p>
-        ))}
+        {activity.detail.length ? (
+          activity.detail.map((paragraph, i) => <p key={i}>{paragraph}</p>)
+        ) : (
+          <p className="is-blank">
+            No write-up yet. This is the part the form has no room for, so it is
+            the reason to send someone this link at all.
+          </p>
+        )}
       </div>
 
       {activity.photos.length ? (

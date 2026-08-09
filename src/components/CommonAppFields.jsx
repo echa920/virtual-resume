@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { LIMITS, TIMING } from '../portfolioData'
+import { LIMITS } from '../portfolioData'
+import { missingFields, annualHours } from '../validation'
 
 function CharCount({ value, limit }) {
   const used = value.length
@@ -12,7 +13,7 @@ function CharCount({ value, limit }) {
   )
 }
 
-function CopyButton({ text, label }) {
+function CopyButton({ text }) {
   const [copied, setCopied] = useState(false)
 
   async function copy() {
@@ -27,22 +28,36 @@ function CopyButton({ text, label }) {
 
   return (
     <button type="button" className="copy" onClick={copy}>
-      {copied ? 'Copied' : label}
+      {copied ? 'Copied' : 'Copy'}
     </button>
   )
 }
 
-function Field({ label, value, limit, copyable }) {
+function Field({ label, value, limit }) {
+  const blank = !value
+
   return (
     <div className="field">
       <div className="field-head">
         <span className="field-label">{label}</span>
         <span className="field-tools">
-          {limit ? <CharCount value={value} limit={limit} /> : null}
-          {copyable ? <CopyButton text={value} label="Copy" /> : null}
+          {limit && !blank ? <CharCount value={value} limit={limit} /> : null}
+          {!blank ? <CopyButton text={value} /> : null}
         </span>
       </div>
-      <p className="field-value">{value}</p>
+      <p className={blank ? 'field-value is-blank' : 'field-value'}>
+        {blank ? 'Not written yet' : value}
+      </p>
+    </div>
+  )
+}
+
+function Stat({ label, value }) {
+  const blank = value === null || value === undefined
+  return (
+    <div className="stat">
+      <dt>{label}</dt>
+      <dd className={blank ? 'is-blank' : 'num'}>{blank ? 'Not set' : value}</dd>
     </div>
   )
 }
@@ -50,7 +65,8 @@ function Field({ label, value, limit, copyable }) {
 export default function CommonAppFields({ activity }) {
   const grades = [...activity.grades].sort((a, b) => a - b)
   const allGrades = [9, 10, 11, 12]
-  const annualHours = activity.hoursPerWeek * activity.weeksPerYear
+  const hours = annualHours(activity)
+  const missing = missingFields(activity)
 
   return (
     <div className="capp">
@@ -62,67 +78,38 @@ export default function CommonAppFields({ activity }) {
       </p>
 
       <Field label="Activity type" value={activity.type} />
-      <Field
-        label="Position / Leadership"
-        value={activity.position}
-        limit={LIMITS.position}
-        copyable
-      />
-      <Field
-        label="Organization"
-        value={activity.organization}
-        limit={LIMITS.organization}
-        copyable
-      />
-      <Field
-        label="Description"
-        value={activity.description}
-        limit={LIMITS.description}
-        copyable
-      />
+      <Field label="Position / Leadership" value={activity.position} limit={LIMITS.position} />
+      <Field label="Organization" value={activity.organization} limit={LIMITS.organization} />
+      <Field label="Description" value={activity.description} limit={LIMITS.description} />
 
       <div className="field">
         <span className="field-label">Participation grade levels</span>
-        <ul className="grades">
-          {allGrades.map((grade) => (
-            <li
-              key={grade}
-              className={grades.includes(grade) ? 'grade is-on' : 'grade'}
-              aria-label={`Grade ${grade}${grades.includes(grade) ? ', selected' : ', not selected'}`}
-            >
-              {grade}
-            </li>
-          ))}
-        </ul>
+        {grades.length ? (
+          <ul className="grades">
+            {allGrades.map((grade) => (
+              <li key={grade} className={grades.includes(grade) ? 'grade is-on' : 'grade'}>
+                {grade}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="field-value is-blank">Not set</p>
+        )}
       </div>
 
       <dl className="stats">
-        <div className="stat">
-          <dt>Timing</dt>
-          <dd>{activity.timing.join(', ')}</dd>
-        </div>
-        <div className="stat">
-          <dt>Hours per week</dt>
-          <dd className="num">{activity.hoursPerWeek}</dd>
-        </div>
-        <div className="stat">
-          <dt>Weeks per year</dt>
-          <dd className="num">{activity.weeksPerYear}</dd>
-        </div>
-        <div className="stat">
-          <dt>Hours per year</dt>
-          <dd className="num">{annualHours.toLocaleString('en-US')}</dd>
-        </div>
-        <div className="stat">
-          <dt>Continue in college</dt>
-          <dd>{activity.continueInCollege ? 'Yes' : 'No'}</dd>
-        </div>
+        <Stat label="Timing" value={activity.timing.length ? activity.timing.join(', ') : null} />
+        <Stat label="Hours per week" value={activity.hoursPerWeek} />
+        <Stat label="Weeks per year" value={activity.weeksPerYear} />
+        <Stat label="Hours per year" value={hours === null ? null : hours.toLocaleString('en-US')} />
+        <Stat label="Continue in college" value={activity.continueInCollege ? 'Yes' : 'No'} />
       </dl>
 
-      {activity.timing.includes(TIMING.all) && activity.weeksPerYear < 40 ? (
+      {missing.length ? (
         <p className="warn">
-          Timing says “{TIMING.all}” but weeks per year is {activity.weeksPerYear}.
-          Reviewers notice that mismatch — check which one is right.
+          <strong>The form needs {missing.length} more thing{missing.length > 1 ? 's' : ''}:</strong>{' '}
+          {missing.join(', ')}. I left {missing.length > 1 ? 'these' : 'this'} blank rather than
+          guess — a wrong number here is worse than an empty one.
         </p>
       ) : null}
     </div>

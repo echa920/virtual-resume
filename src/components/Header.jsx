@@ -1,12 +1,11 @@
 import { profile, activities, ACTIVITY_LIMIT } from '../portfolioData'
+import { totalAnnualHours, missingFields } from '../validation'
 import assetUrl from '../assetUrl'
 
 export default function Header() {
-  const annualHours = activities.reduce(
-    (total, activity) => total + activity.hoursPerWeek * activity.weeksPerYear,
-    0,
-  )
+  const hours = totalAnnualHours(activities)
   const overLimit = activities.length > ACTIVITY_LIMIT
+  const incomplete = activities.filter((a) => missingFields(a).length > 0)
 
   return (
     <header className="header">
@@ -26,12 +25,14 @@ export default function Header() {
 
       <ul className="contact">
         <li>
-          {profile.highSchool} · Class of {profile.graduationYear}
+          {profile.school} · Class of {profile.graduationYear}
         </li>
         <li>{profile.location}</li>
-        <li>
-          <a href={`mailto:${profile.email}`}>{profile.email}</a>
-        </li>
+        {profile.email ? (
+          <li>
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          </li>
+        ) : null}
         {profile.links.map((link) => (
           <li key={link.label}>
             <a href={link.href} target="_blank" rel="noreferrer">
@@ -50,16 +51,28 @@ export default function Header() {
           </dd>
         </div>
         <div className="total">
-          <dt>Hours per year, combined</dt>
-          <dd className="num">{annualHours.toLocaleString('en-US')}</dd>
+          <dt>Hours per year, counted</dt>
+          <dd className="num">
+            {hours.toLocaleString('en-US')}
+            {incomplete.length ? <span className="of">incomplete</span> : null}
+          </dd>
         </div>
       </dl>
 
       {overLimit ? (
         <p className="warn">
-          The Common App accepts {ACTIVITY_LIMIT} activities. You have{' '}
-          {activities.length} — cut {activities.length - ACTIVITY_LIMIT} before
-          filling in the form, or keep them here and list only your strongest ten.
+          The Common App accepts {ACTIVITY_LIMIT} activities. You have {activities.length} — cut{' '}
+          {activities.length - ACTIVITY_LIMIT}.
+        </p>
+      ) : null}
+
+      {incomplete.length ? (
+        <p className="warn">
+          <strong>
+            {incomplete.length} of {activities.length} activities are missing required form fields.
+          </strong>{' '}
+          Mostly hours per week and weeks per year, which you have not given me. Open any activity to
+          see exactly what its entry still needs.
         </p>
       ) : null}
     </header>
