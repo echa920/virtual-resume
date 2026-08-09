@@ -173,6 +173,15 @@
   color: var(--text-muted);
 }
 
+.acad-note {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  border-left: 2px solid var(--border);
+  padding-left: 10px;
+}
+
 .acad-label {
   margin-top: 16px;
   margin-bottom: 8px;

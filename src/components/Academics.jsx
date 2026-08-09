@@ -10,6 +10,7 @@ export default function Academics() {
         <h2 className="panel-title">School</h2>
         <p className="acad-lead">{profile.school}</p>
         <p className="acad-sub">Graduating June {profile.graduationYear}</p>
+        {profile.systemNote ? <p className="acad-note">{profile.systemNote}</p> : null}
 
         <p className="acad-label">Relevant coursework</p>
         <ul className="tags">

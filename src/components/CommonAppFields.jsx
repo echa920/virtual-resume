@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { LIMITS } from '../portfolioData'
+import { LIMITS, profile } from '../portfolioData'
 import { missingFields, annualHours } from '../validation'
 
 function CharCount({ value, limit }) {
@@ -64,7 +64,10 @@ function Stat({ label, value }) {
 
 export default function CommonAppFields({ activity }) {
   const grades = [...activity.grades].sort((a, b) => a - b)
-  const allGrades = [9, 10, 11, 12]
+  // Stops at the final year of your school system, so there is no empty 12th
+  // grade box implying a year you were meant to fill in.
+  const allGrades = []
+  for (let g = 9; g <= profile.finalGrade; g++) allGrades.push(g)
   const hours = annualHours(activity)
   const missing = missingFields(activity)
 

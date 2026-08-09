@@ -43,6 +43,14 @@ export const profile = {
   school: 'Colegio Montessori Medellín',
   graduationYear: 2027,
 
+  // Colombian secondary school ends at 11th grade — there is no 12th. The
+  // Common App still shows a grade 12 checkbox; you simply leave it unticked.
+  // Worth stating plainly, because a US reader may otherwise read a missing
+  // 12th-grade year as a gap.
+  finalGrade: 11,
+  systemNote:
+    'Colombian secondary school ends at 11th grade, so 11th is my final year.',
+
   coursework: [
     'Physics',
     'Trigonometry',
@@ -150,7 +158,8 @@ export const activities = [
     organization: 'UT PREP Summer STEM Camp, University of Texas',
     description:
       'Five-week summer camp, 8-hour days Monday to Thursday. Completed six Python coursework modules and built projects including a video game.',
-    grades: [11],
+    // June–July 2026, the summer straight after 10th grade finished.
+    grades: [10],
     timing: [TIMING.break],
     // 16 Jun – 17 Jul 2026. Week one started on the Tuesday, so 4 weeks of
     // 32 hours plus one of 24 = 152 hours; 30/week is the honest average.
@@ -177,7 +186,7 @@ export const activities = [
     organization: 'Model United Nations, conferences across Medellín',
     description:
       'Attended 10 Model UN conferences across Medellín as a delegate. Won Best Delegate, Best Speaker twice, and Best Portfolio.',
-    grades: [9, 10, 11, 12],
+    grades: [9, 10, 11],
     timing: [TIMING.year],
     hoursPerWeek: null,
     weeksPerYear: null,
@@ -226,13 +235,12 @@ export const activities = [
     organization: 'Newscast System, Colegio Montessori Medellín',
     description:
       "Founded the school's newscast system. Recorded 160+ hours of interviews, news and events, and recruited and trained 15 reporters.",
-    grades: [9, 10, 11, 12],
+    grades: [9, 10, 11],
     timing: [TIMING.year],
-    // You said ~85 hours. Read as 85 per year over a ~34-week school year,
-    // which is 2.5/week. If you meant 85 across all four years, this is four
-    // times too high — say so and I will drop it to roughly 0.6/week.
-    hoursPerWeek: 2.5,
-    weeksPerYear: 34,
+    // 85 hours across three years ≈ 28 a year, which over a 28-week stretch of
+    // the school year is about 1 hour a week.
+    hoursPerWeek: 1,
+    weeksPerYear: 28,
     continueInCollege: true,
     detail: [
       'The school had no newscast. I started one in 2023 and have run it since, which meant working out everything from scratch — what to cover, how to record it, and who would still be doing it after I graduate.',
@@ -253,7 +261,7 @@ export const activities = [
     organization: 'Colegio Montessori Medellín and club team',
     description:
       'Seven years on school and club teams, named captain of both in my third year. MVP at Miami Heat camp and the Barranquilla international games.',
-    grades: [9, 10, 11, 12],
+    grades: [9, 10, 11],
     timing: [TIMING.all],
     // 4 sessions a week at 1h30 = 6 hours. Weeks per year still needed.
     hoursPerWeek: 6,
