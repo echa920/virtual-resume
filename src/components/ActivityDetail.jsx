@@ -1,4 +1,5 @@
 import CommonAppFields from './CommonAppFields'
+import GradeYears from './GradeYears'
 import assetUrl from '../assetUrl'
 import { workingView } from '../viewMode'
 
@@ -9,6 +10,7 @@ export default function ActivityDetail({ activity }) {
         <p className="detail-type">{activity.type}</p>
         <h3 className="detail-org">{activity.organization}</h3>
         <p className="detail-position">{activity.position}</p>
+        <GradeYears grades={activity.grades} />
       </header>
 
       {activity.highlights.length ? (

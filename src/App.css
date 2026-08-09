@@ -578,6 +578,25 @@ a:focus-visible {
   border-color: var(--accent);
 }
 
+.detail-years {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.years-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--text-muted);
+}
+
+.detail-years .grades {
+  margin-top: 0;
+}
+
 .grades {
   display: flex;
   gap: 6px;

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { LIMITS } from '../portfolioData'
+import GradeYears from './GradeYears'
 import { missingFields, annualHours } from '../validation'
 
 function CharCount({ value, limit }) {
@@ -79,6 +80,11 @@ export default function CommonAppFields({ activity }) {
       <Field label="Position / Leadership" value={activity.position} limit={LIMITS.position} />
       <Field label="Organization" value={activity.organization} limit={LIMITS.organization} />
       <Field label="Description" value={activity.description} limit={LIMITS.description} />
+
+      <div className="field">
+        <span className="field-label">Participation grade levels</span>
+        <GradeYears grades={activity.grades} />
+      </div>
 
       <dl className="stats">
         <Stat label="Timing" value={activity.timing.length ? activity.timing.join(', ') : null} />
