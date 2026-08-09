@@ -1,4 +1,5 @@
 import { profile, honors, HONORS_LIMIT, LIMITS } from '../portfolioData'
+import { workingView } from '../viewMode'
 
 export default function Academics() {
   const overHonors = honors.length > HONORS_LIMIT
@@ -44,7 +45,12 @@ export default function Academics() {
 
       <div className="acad-block">
         <h2 className="panel-title">
-          Honors <span className="acad-count">{honors.length} of {HONORS_LIMIT} allowed</span>
+          Honors
+          {workingView ? (
+            <span className="acad-count">
+              {honors.length} of {HONORS_LIMIT} allowed
+            </span>
+          ) : null}
         </h2>
 
         <ul className="honors">
@@ -53,23 +59,27 @@ export default function Academics() {
             return (
               <li key={honor.id} className="honor">
                 <span className="honor-title">{honor.title}</span>
-                <span className="honor-meta">
-                  <span className={over ? 'count is-over' : 'count'}>
-                    {honor.title.length}/{LIMITS.honor}
+                {workingView ? (
+                  <span className="honor-meta">
+                    <span className={over ? 'count is-over' : 'count'}>
+                      {honor.title.length}/{LIMITS.honor}
+                    </span>
+                    <span className={honor.level ? '' : 'is-blank'}>
+                      {honor.level ?? 'Level of recognition not set'}
+                    </span>
+                    <span className={honor.grades.length ? '' : 'is-blank'}>
+                      {honor.grades.length ? `Grade ${honor.grades.join(', ')}` : 'Grade not set'}
+                    </span>
                   </span>
-                  <span className={honor.level ? '' : 'is-blank'}>
-                    {honor.level ?? 'Level of recognition not set'}
-                  </span>
-                  <span className={honor.grades.length ? '' : 'is-blank'}>
-                    {honor.grades.length ? `Grade ${honor.grades.join(', ')}` : 'Grade not set'}
-                  </span>
-                </span>
+                ) : honor.level ? (
+                  <span className="honor-meta">{honor.level}</span>
+                ) : null}
               </li>
             )
           })}
         </ul>
 
-        {overHonors ? (
+        {workingView && overHonors ? (
           <p className="warn">
             The Common App accepts {HONORS_LIMIT} honors. You have {honors.length} — cut{' '}
             {honors.length - HONORS_LIMIT}.

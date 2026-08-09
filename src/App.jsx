@@ -7,6 +7,7 @@ import SampleBanner from './components/SampleBanner'
 import Academics from './components/Academics'
 import NoIndex from './components/NoIndex'
 import { categories, activities, isSampleData, unlisted } from './portfolioData'
+import { workingView } from './viewMode'
 import './App.css'
 
 function App() {
@@ -46,6 +47,14 @@ function App() {
     <main className="page">
       {unlisted || isSampleData ? <NoIndex /> : null}
       {isSampleData ? <SampleBanner /> : null}
+
+      {workingView ? (
+        <p className="working-note" role="status">
+          <strong>Working view.</strong> Common App fields and everything still
+          missing are shown. Drop <code>?form</code> from the address for the
+          clean version.
+        </p>
+      ) : null}
 
       <Header />
 

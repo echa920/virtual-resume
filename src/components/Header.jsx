@@ -1,6 +1,7 @@
 import { profile, activities, ACTIVITY_LIMIT } from '../portfolioData'
 import { totalAnnualHours, missingFields } from '../validation'
 import assetUrl from '../assetUrl'
+import { workingView } from '../viewMode'
 
 export default function Header() {
   const hours = totalAnnualHours(activities)
@@ -42,31 +43,33 @@ export default function Header() {
         ))}
       </ul>
 
-      <dl className="totals">
-        <div className="total">
-          <dt>Activities listed</dt>
-          <dd className={overLimit ? 'num is-over' : 'num'}>
-            {activities.length}
-            <span className="of">of {ACTIVITY_LIMIT} allowed</span>
-          </dd>
-        </div>
-        <div className="total">
-          <dt>Hours per year, counted</dt>
-          <dd className="num">
-            {hours.toLocaleString('en-US')}
-            {incomplete.length ? <span className="of">incomplete</span> : null}
-          </dd>
-        </div>
-      </dl>
+      {workingView ? (
+        <dl className="totals">
+          <div className="total">
+            <dt>Activities listed</dt>
+            <dd className={overLimit ? 'num is-over' : 'num'}>
+              {activities.length}
+              <span className="of">of {ACTIVITY_LIMIT} allowed</span>
+            </dd>
+          </div>
+          <div className="total">
+            <dt>Hours per year, counted</dt>
+            <dd className="num">
+              {hours.toLocaleString('en-US')}
+              {incomplete.length ? <span className="of">incomplete</span> : null}
+            </dd>
+          </div>
+        </dl>
+      ) : null}
 
-      {overLimit ? (
+      {workingView && overLimit ? (
         <p className="warn">
           The Common App accepts {ACTIVITY_LIMIT} activities. You have {activities.length} — cut{' '}
           {activities.length - ACTIVITY_LIMIT}.
         </p>
       ) : null}
 
-      {incomplete.length ? (
+      {workingView && incomplete.length ? (
         <p className="warn">
           <strong>
             {incomplete.length} of {activities.length} activities are missing required form fields.
