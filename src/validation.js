@@ -19,8 +19,13 @@ function isBlank(value) {
   return false
 }
 
+// An activity can opt a field out with notRequired, e.g. ['grades'], when the
+// field genuinely does not apply to it, so the page stops asking for it.
 export function missingFields(activity) {
-  return REQUIRED.filter((field) => isBlank(activity[field.key])).map((f) => f.label)
+  const skip = activity.notRequired ?? []
+  return REQUIRED.filter((field) => !skip.includes(field.key) && isBlank(activity[field.key])).map(
+    (f) => f.label,
+  )
 }
 
 export function overLimitFields(activity) {

@@ -213,7 +213,11 @@ export const activities = [
     organization: 'Villatina community project, Medellín',
     description:
       'Volunteer with the Villatina community in Medellín every Christmas, and once or twice a quarter through the rest of the year.',
-    grades: [], // Which school years? "Every Christmas" implies several.
+    // Left empty deliberately: this is charitable work, not a school activity.
+    // Note the Common App's own field means which school YEARS you took part
+    // (9th/10th/11th), not marks — so it will still want at least one ticked.
+    grades: [],
+    notRequired: ['grades'],
     timing: [TIMING.all],
     hoursPerWeek: 4,
     weeksPerYear: 6, // ~1–2 per quarter plus Christmas.
