@@ -176,7 +176,7 @@ export const activities = [
       '~150 hours of Python',
       'Work published publicly, module by module',
     ],
-    photos: [],
+    media: [],
   },
   {
     id: 'model-un',
@@ -201,7 +201,7 @@ export const activities = [
       'Best Speaker, twice',
       'Best Portfolio',
     ],
-    photos: [],
+    media: [],
   },
 
   // ----------------------------------------------------------------- service
@@ -223,7 +223,7 @@ export const activities = [
       'What we actually do there, and what it has meant, is the part still missing from this page — and it is the part worth writing.',
     ],
     highlights: ['Every Christmas, plus 1–2 visits a quarter'],
-    photos: [],
+    media: [],
   },
 
   // --------------------------------------------------------- extracurricular
@@ -251,7 +251,7 @@ export const activities = [
       '160+ hours of interviews, news and events recorded',
       '15 reporters recruited and trained',
     ],
-    photos: [],
+    media: [],
   },
   {
     id: 'basketball',
@@ -280,7 +280,7 @@ export const activities = [
       'MVP, Miami Heat camp',
       'MVP, Barranquilla international games',
     ],
-    photos: [],
+    media: [],
   },
   {
     id: 'robotics',
@@ -302,7 +302,7 @@ export const activities = [
       '2 VEX competitions entered',
       '3 robots built, 2 of them winning',
     ],
-    photos: [],
+    media: [],
   },
   {
     id: 'class-president',
@@ -324,7 +324,7 @@ export const activities = [
       'What I actually did with the role is the piece still missing from this page.',
     ],
     highlights: ['Elected twice, in 7th and 11th grade'],
-    photos: [],
+    media: [],
   },
 
   // ----------------------------------------------------------------- outdoor

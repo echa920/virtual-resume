@@ -1,6 +1,6 @@
 import CommonAppFields from './CommonAppFields'
 import GradeYears from './GradeYears'
-import assetUrl from '../assetUrl'
+import MediaGallery from './MediaGallery'
 import { workingView } from '../viewMode'
 
 export default function ActivityDetail({ activity }) {
@@ -32,16 +32,7 @@ export default function ActivityDetail({ activity }) {
         )}
       </div>
 
-      {activity.photos.length ? (
-        <ul className="gallery">
-          {activity.photos.map((photo) => (
-            <li key={photo.src}>
-              <img src={assetUrl(photo.src)} alt={photo.caption} loading="lazy" />
-              {photo.caption ? <p className="caption">{photo.caption}</p> : null}
-            </li>
-          ))}
-        </ul>
-      ) : null}
+      <MediaGallery items={activity.media} />
 
       {workingView ? <CommonAppFields activity={activity} /> : null}
     </article>

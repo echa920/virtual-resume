@@ -77,3 +77,35 @@ npm run lint     # oxlint
   to be open.
 - `vite.config.js` sets `base: '/virtual-resume/'` for GitHub Pages. Change it to
   `'/'` for a custom domain.
+
+## Photos and video
+
+Each activity has a `media` array. Three kinds of item:
+
+```js
+media: [
+  { type: 'image', src: 'robotics-team.jpg', caption: 'VEX regional, 2025' },
+  { type: 'video', src: 'clip.mp4', poster: 'still.jpg', caption: 'Newscast open' },
+  { type: 'embed', src: 'https://www.youtube.com/embed/VIDEO_ID', caption: 'Full episode' },
+]
+```
+
+Files for `image` and `video` go in [`public/`](public/) and are referenced by
+filename. `embed` takes a full YouTube or Vimeo **embed** URL — note `/embed/`,
+not the `watch?v=` address from the browser bar.
+
+Images sit in a grid; embeds span the full width, since a thumbnail-sized player
+is unusable.
+
+### Keep video out of the repo
+
+Git stores every version of a binary forever, so a committed video bloats the
+repo permanently even after deletion. GitHub also rejects files over 100 MB, and
+Pages sites are capped at 1 GB with a 100 GB/month bandwidth limit.
+
+- **Long video** — upload to YouTube as *Unlisted* and use `type: 'embed'`.
+  Unlisted means link-only, same as this site.
+- **Short clip** under ~10 MB — `type: 'video'` in `public/` is fine. Give it a
+  `poster` image so the page does not load megabytes before anyone presses play.
+- **Photos** — resize to about 1600px on the long edge and save as JPEG. A phone
+  photo is often 5 MB and looks identical at 400 KB.
