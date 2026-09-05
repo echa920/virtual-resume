@@ -488,6 +488,17 @@ a:focus-visible {
   background: var(--bg);
 }
 
+/* Phone clips are portrait. The shared 4/3 crop above would cut the top and
+   bottom off one, so a video keeps its own ratio and letterboxes the cell
+   instead. The max-height stops a 9:16 clip from towering over its neighbours. */
+.gallery video {
+  aspect-ratio: auto;
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+  background: #000;
+}
+
 /* An embedded player needs the full row; a thumbnail-sized YouTube frame is
    unusable, so these items span the grid instead of sitting in one cell. */
 .gallery li.is-wide {

@@ -215,7 +215,7 @@ export const activities = [
       'Volunteer with the Villatina community in Medellín every Christmas, and once or twice a quarter through the rest of the year.',
     grades: [], // Which school years? "Every Christmas" implies several.
     timing: [TIMING.all],
-    hoursPerWeek: null, // How long is a typical visit?
+    hoursPerWeek: 4,
     weeksPerYear: 6, // ~1–2 per quarter plus Christmas.
     continueInCollege: true,
     detail: [
@@ -264,23 +264,30 @@ export const activities = [
     grades: [9, 10, 11],
     timing: [TIMING.all],
     // 4 sessions a week at 1h30 = 6 hours. Weeks per year still needed.
-    hoursPerWeek: 6,
+    hoursPerWeek: 8,
     weeksPerYear: null,
     continueInCollege: true,
     detail: [
       'Seven years of basketball across my school team and a club team, which between them run most of the year rather than a single season.',
-      'Training is four days a week, an hour and a half a session — six hours on the court in a normal week, before games.',
+      'Training runs to about eight hours a week across four sessions, before games.',
       'I was made captain of both in my third year. That was decided on leadership rather than being the best player on the floor, and it is the reason basketball is on this list at all.',
       'The two MVP awards came at the Miami Heat basketball camp and the Barranquilla international games.',
     ],
     highlights: [
       '7 years, school and club teams',
-      '4 sessions a week, 1h30 each',
+      '~8 hours a week of training',
       'Captain of both teams from year three',
       'MVP, Miami Heat camp',
       'MVP, Barranquilla international games',
     ],
-    media: [],
+    media: [
+      {
+        type: 'video',
+        src: 'media/basketball-3x3.mp4',
+        poster: 'media/basketball-3x3-poster.jpg',
+        caption: '3x3 tournament, FIBA 3x3 Tour Colombia',
+      },
+    ],
   },
   {
     id: 'robotics',
@@ -308,28 +315,67 @@ export const activities = [
     id: 'class-president',
     category: 'extracurricular',
     type: 'Student Govt./Politics',
-    position: 'Class President',
+    position: 'Classroom President; Personero Candidate',
     organization: 'Colegio Montessori Medellín',
     description:
-      'Elected class president twice by my year group, in 7th grade and again in 11th.',
-    // Only 11th goes in the boxes: the Common App records grades 9–12, so the
-    // 7th-grade term cannot be ticked. It stays in the text, where it is true.
+      'Classroom president all year. Ran for personero, the school-wide student representative, and placed second against four other candidates.',
+    // 7th grade cannot be ticked: the Common App records grades 9 and up. It
+    // stays in the write-up, where it is true.
     grades: [11],
-    timing: [TIMING.year],
+    timing: [TIMING.all],
+    // The form has no all-year-round option for hours: it wants a number even
+    // when the role never really stops. An honest estimate is what goes here.
     hoursPerWeek: null,
-    weeksPerYear: null,
+    weeksPerYear: 40,
     continueInCollege: true,
     detail: [
-      'Elected class president twice by the people I sit with every day — once in 7th grade and again in 11th, four years apart. Winning it the second time, after they had already seen me do the job once, is the part that means something.',
-      'What I actually did with the role is the piece still missing from this page.',
+      'Classroom president, elected by the people I sit with every day — once in 7th grade and again in 11th, four years apart. Winning it the second time, after they had already seen me do the job once, is the part that means something.',
+      'In 11th grade I also ran for personero, the student elected to represent the whole school rather than one classroom, and came second out of five candidates.',
+      'It is a real campaign: you stand in front of every year group and ask them to pick you. Losing it narrowly, to people I still see every day, taught me more than the classroom elections I won.',
     ],
-    highlights: ['Elected twice, in 7th and 11th grade'],
+    highlights: [
+      'Second of five in the school-wide personero election',
+      'Classroom president, elected twice',
+    ],
     media: [],
   },
 
   // ----------------------------------------------------------------- outdoor
-  // Nothing here yet — you asked for this category but the information you
-  // sent has no outdoor activities in it. Either add some or drop the category.
+  // STUB — created only so the two wakesurfing clips have somewhere to live.
+  // Everything factual about it is still unknown: how many years, how often,
+  // where, whether it is coached or just family weekends. Fill the nulls in or
+  // delete this entry; do not send the link to anyone while it reads like this.
+  {
+    id: 'wakesurfing',
+    category: 'outdoor',
+    type: 'Athletics: Club',
+    position: '',
+    // Not a claim about a club or team — just a label so the entry is
+    // clickable in the list. Replace it with the real organization.
+    organization: 'Wakesurfing',
+    description: '',
+    grades: [],
+    timing: [],
+    hoursPerWeek: null,
+    weeksPerYear: null,
+    continueInCollege: null,
+    detail: [],
+    highlights: [],
+    media: [
+      {
+        type: 'video',
+        src: 'media/wakesurf-1.mp4',
+        poster: 'media/wakesurf-1-poster.jpg',
+        caption: 'Wakesurfing',
+      },
+      {
+        type: 'video',
+        src: 'media/wakesurf-2.mp4',
+        poster: 'media/wakesurf-2-poster.jpg',
+        caption: 'Wakesurfing',
+      },
+    ],
+  },
 ]
 
 // ---------------------------------------------------------------------------
